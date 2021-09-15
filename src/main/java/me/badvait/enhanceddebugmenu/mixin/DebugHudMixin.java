@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-@Mixin(DebugHud.class)
+@Mixin(DebugHud.class) // test
 public abstract class DebugHudMixin {
 
     @Shadow
