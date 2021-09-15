@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.badvait.enhanceddebugmenu.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "DebugHudMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

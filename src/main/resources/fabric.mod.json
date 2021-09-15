@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "enhanceddebugmenu",
+  "version": "${version}",
+  "name": "EnhancedDebugMenu",
+  "description": "Enhanced F3 screen for speedrunners.",
+  "authors": [
+    "Badvait"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.badvait.enhanceddebugmenu.client.EnhancedDebugMenuClient"
+    ],
+    "main": [
+      "me.badvait.enhanceddebugmenu.EnhancedDebugMenu"
+    ]
+  },
+  "mixins": [
+    "enhanceddebugmenu.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.6",
+    "minecraft": "1.16.x",
+    "java": ">=8"
+  }
+}
