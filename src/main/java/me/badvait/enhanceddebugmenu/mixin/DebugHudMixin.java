@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.UnmodifiableIterator;
 import it.unimi.dsi.fastutil.longs.LongSet;
 import it.unimi.dsi.fastutil.longs.LongSets;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.SharedConstants;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.ClientBrandRetriever;
@@ -14,6 +15,7 @@ import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.DebugHud;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.integrated.IntegratedServer;
@@ -28,10 +30,7 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.Heightmap;
-import net.minecraft.world.LightType;
-import net.minecraft.world.LocalDifficulty;
-import net.minecraft.world.World;
+import net.minecraft.world.*;
 import net.minecraft.world.chunk.WorldChunk;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -43,6 +42,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Mixin(DebugHud.class)
 public abstract class DebugHudMixin {
@@ -126,6 +127,7 @@ public abstract class DebugHudMixin {
             list.add(this.client.worldRenderer.getEntitiesDebugString());
             list.add(this.client.worldRenderer.getChunksDebugString());
             // , this.client.worldRenderer.getChunksDebugString(), this.client.worldRenderer.getEntitiesDebugString(), "P: " + this.client.particleManager.getDebugString() + ". T: " + this.client.world.getRegularEntityCount(), this.client.world.getDebugString()
+
             /*
             String string8 = this.method_27871();
             if (string8 != null) {
@@ -133,6 +135,7 @@ public abstract class DebugHudMixin {
             }
 
              */
+
 
             //list.add(this.client.world.getRegistryKey().getValue() + " FC: " + ((LongSet)longSet).size());
             list.add("");
@@ -217,13 +220,13 @@ public abstract class DebugHudMixin {
             }
 
             ServerWorld serverWorld = this.getServerWorld();
-            /*
+
             if (serverWorld != null) {
                 SpawnHelper.Info info = serverWorld.getChunkManager().getSpawnInfo();
                 if (info != null) {
                     Object2IntMap<SpawnGroup> object2IntMap = info.getGroupToCount();
                     m = info.getSpawningChunkCount();
-                    list.add("SC: " + m + ", " + (String)Stream.of(SpawnGroup.values()).map((spawnGroup) -> {
+                    list.add("SC: " + m + ", " + (String) Stream.of(SpawnGroup.values()).map((spawnGroup) -> {
                         return Character.toUpperCase(spawnGroup.getName().charAt(0)) + ": " + object2IntMap.getInt(spawnGroup);
                     }).collect(Collectors.joining(", ")));
                 } else {
@@ -233,7 +236,6 @@ public abstract class DebugHudMixin {
 
             }
 
-             */
 
             /*
             ShaderEffect shaderEffect = this.client.gameRenderer.getShader();
