@@ -8,8 +8,8 @@
 
 #
 
-![alt tag](https://i.imgur.com/twFbDud.png)
-#### **(Debug screen before after using mod.)**
+![alt tag](https://i.imgur.com/TpKxFj1.png)
+#### **(Debug screen after using mod.)**
 
 #
 
